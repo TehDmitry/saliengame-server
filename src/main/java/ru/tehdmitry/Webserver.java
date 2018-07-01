@@ -16,6 +16,7 @@ public class Webserver {
                 .setHandler(Handlers.path()
                         .addPrefixPath("/saliengame/", new SaliengameHandler())
                         .addPrefixPath("/ITerritoryControlMinigameService/", new TerritoryControlHandler())
+                        .addPrefixPath("/IMiniGameService/", new MiniGameHandler())
                         .addPrefixPath("/", resource(new FileResourceManager(new File("webapp"), 1024)))
                  ).build().start();
     }
