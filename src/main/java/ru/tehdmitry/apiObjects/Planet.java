@@ -11,13 +11,15 @@ public class Planet {
     public List<PlanetZone> zones = new ArrayList<PlanetZone>();
 
 
-    public Planet(String id) {
+    public Planet(String id, Boolean includeZones, int position) {
         this.id = id;
 
-        for (int i = 0; i <= 95; i++) {
-            zones.add(new PlanetZone(i, 3, 4));
+        if(includeZones) {
+            for (int i = 0; i <= 95; i++) {
+                zones.add(new PlanetZone(i, 3, 4));
+            }
         }
 
-        state = new PlanetState();
+        state = new PlanetState(position);
     }
 }

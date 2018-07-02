@@ -23,11 +23,12 @@ public class TerritoryControlHandler implements HttpHandler {
         ApiResponse apiResponse = new ApiResponse();
 
         if (exchange.getRelativePath().equals("/GetPlayerInfo/v0001/")) {
-            exchange.getResponseSender().send("{\"response\":{\"active_planet\":\"17\",\"time_on_planet\":575,\"score\":\"2169535\",\"level\":10,\"next_level_score\":\"2400000\"}}");
+            //exchange.getResponseSender().send("{\"response\":{\"active_planet\":\"17\",\"time_on_planet\":575,\"score\":\"2169535\",\"level\":10,\"next_level_score\":\"2400000\"}}");
+            exchange.getResponseSender().send("{\"response\":{\"score\":\"2169535\",\"level\":10,\"next_level_score\":\"2400000\"}}");
         }
 
         if (exchange.getRelativePath().contains("/GetPlanet/v0001/")) {
-            apiResponse.response.addPlanet(new Planet("17"));
+            apiResponse.response.addPlanet(new Planet("17", true, 0));
             String jsonInString = mapper.writeValueAsString(apiResponse);
             exchange.getResponseSender().send(jsonInString);
         }
@@ -56,6 +57,19 @@ public class TerritoryControlHandler implements HttpHandler {
         }
 
         if (exchange.getRelativePath().equals("/LeaveGame/v0001/")) {
+            exchange.getResponseSender().send("{\"response\":{}}");
+        }
+
+        if (exchange.getRelativePath().equals("/GetPlanets/v0001/")) {
+            apiResponse.response.addPlanet(new Planet("17", false, 0));
+            apiResponse.response.addPlanet(new Planet("18", false, 1));
+            apiResponse.response.addPlanet(new Planet("19", false,2));
+            apiResponse.response.addPlanet(new Planet("20", false, 3));
+            String jsonInString = mapper.writeValueAsString(apiResponse);
+            exchange.getResponseSender().send(jsonInString);
+        }
+
+        if (exchange.getRelativePath().equals("/JoinPlanet/v0001/")) {
             exchange.getResponseSender().send("{\"response\":{}}");
         }
     }

@@ -17,4 +17,9 @@ public class PlanetState {
     public int current_players = 28030;
     public int priority = 17;
     public String tag_ids = "1721,1742";
+    public int boss_zone_position = 1;
+
+    public PlanetState(int position) {
+        this.position = position;
+    }
 }

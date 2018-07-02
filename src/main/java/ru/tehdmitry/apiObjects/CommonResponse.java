@@ -12,6 +12,7 @@ public class CommonResponse {
 
     public BossDamage bossDamage;
     public BossStatus boss_status;
+    public int game_version = 2;
 
     public void setBossDamage(BossDamage bossDamage) {
         this.bossDamage = bossDamage;
